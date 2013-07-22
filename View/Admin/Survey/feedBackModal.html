@@ -1,0 +1,51 @@
+<button class="close" ng-click="close()">x</button>
+<div class="modal-header">
+    <h4>Choose a feeddbackers</h4>
+</div>
+<div class="modal-body">
+    <div class="left-section">
+        <div ng-repeat="team in teams | orderBy:'Name'" ng-click="selectTeam(team, teams)" class="team" ng-class="{'selected': selectedTeam.Id == team.Id}">
+            <div class="team-header">
+                {{team.Name}}
+            </div>
+            <div class="team-body">
+                <div ng-show="!getPersonsByTeam(team.Name).length" class="empty">
+                    no persons in this team
+                </div>
+                <div ng-repeat="person in getPersonsByTeam(team.Name)" class="person" ng-click="selectPerson(person, persons, true)"
+                     ng-class="{'selected': selectedPerson.Id == person.Id && selectedPersons.indexOf(person) === -1, 'disabled': selectedPersons.indexOf(person) !== -1}">
+                    {{person.FullName}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="center-section">
+        <i class="icon-arrow-right" ng-click="moveRight()"
+           ng-class="{'disabled' : (!selectedTeam || selectedTeams.indexOf(selectedTeam) !== -1) && (!selectedPerson || selectedPersons.indexOf(selectedPerson) !== -1)}"></i>
+        <i class="icon-arrow-left" ng-click="moveLeft()"
+           ng-class="{'disabled' : (!selectedTeam || teams.indexOf(selectedTeam) !== -1) && (!selectedPerson || selectedPersons.indexOf(selectedPerson) === -1)}"></i>
+    </div>
+    <div class="right-section">
+        <div ng-repeat="team in selectedTeams" ng-click="selectTeam(team, selectedTeams)" class="team" ng-class="{'selected': selectedTeam.Id == team.Id}">
+            <div class="team-header">
+                {{team.Name}}
+            </div>
+            <div class="team-body">
+                <div ng-show="!getPersonsByTeam(team.Name).length" class="empty">
+                    no persons in this team
+                </div>
+                <div ng-repeat="person in getPersonsByTeam(team.Name)" class="person" ng-click="selectPerson($index, selectedPersons)"
+                     ng-class="{'selected': selectedPerson.Id == person.Id, 'disabled': selectedPersons.indexOf(person) !== -1}">
+                    {{person.FullName}}
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="person in selectedPersons" class="selected-person" ng-click="selectPerson(person, selectedPersons)"
+             ng-class="{'selected': selectedPerson.Id == person.Id}" >
+            {{person.FullName}}
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button ng-click="save()" class="btn btn-primary" >Save</button>
+</div>

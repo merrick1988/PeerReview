@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="mainModule">
+<head>
+    <meta charset="utf-8" />
+    <title>ViewBag.Title - peerUp!</title>
+    <link rel="stylesheet" href="Styles/bootstrap.css"/>
+    <link rel="stylesheet" href="Styles/bootstrap-responsive.css"/>
+    <link rel="stylesheet" href="Styles/font-awesome.css"/>
+    <link rel="stylesheet" href="Styles/main.css"/>
+    <link rel="stylesheet" href="Styles/modal.css"/>
+    <link rel="stylesheet" href="Styles/responsive.css"/>
+</head>
+<body>
+    <header>
+        <div class="blue-line">
+            <div class="logo container">
+                <h1><a href="#">Feedback Requests</a></h1>
+                <div class="log-off">
+                    <a href="Log Out"></a>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section class="body">
+       <ng-include src="'View/Admin/MainPage.html'"></ng-include>
+    </section>
+    <footer>
+        <p>&copy; 2013 - Peerup.ch</p>
+    </footer>
+    <script type="text/javascript" src="Scripts/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="Scripts/lib/angular/angular-localStorage.js"></script>
+    <script type="text/javascript" src="Scripts/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="Scripts/lib/angular/ui-bootstrap-0.4.0.js"></script>
+    <script type="text/javascript" src="Scripts/lib/jQuery/jQuery.v2.0.3.js"></script>
+    <script type="text/javascript" src="Scripts/lib/bootstrap/bootstrap.js"></script>
+    <script type="text/javascript" src="Scripts/lib/underscore.js"></script>
+    <script type="text/javascript" src="Scripts/app.js"></script>
+    <script type="text/javascript" src="Scripts/services/reviewDataService.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/admin/adminController.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/admin/administrateController.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/admin/adminCircleController.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/login/loginController.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/persons/FeedBackController.js"></script>
+    <script type="text/javascript" src="Scripts/controllers/persons/feedBackItemController.js"></script>
+</body>
+</html>

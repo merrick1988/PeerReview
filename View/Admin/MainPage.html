@@ -1,0 +1,28 @@
+<!-- main menu -->
+<section ng-controller="adminController">
+    <div class="navbar gray-line">
+        <ul class="nav main-menu container" ng-click="changeState($event);">
+            <li ng-class="{'active' : state == 'administrate'}" ng-click="state=administrate"><a href="" id="administrate">Surveys</a></li>
+            <li ng-class="{'active' : state == 'reportingCenter'}" ng-click="state=reportingCenter"><a href="" id="reportingCenter">Reporting Center</a></li>
+            <li class="select-control">
+                <div class="btn-group">
+                    <button class="btn dropdown-toggle" data-toggle="dropdown">
+                        Select existing survey...
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li ng-repeat="survey in surveys"><a href="">{{survey.Name}}</a></li>
+                        <li class="divider"></li>
+                        <li><a href="">View all surveys</a></li>
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="container" ng-switch on="state" ng-animate="{enter: 'example-enter', leave: 'example-leave'}">
+        <div ng-switch-when="settings">Settings Div</div>
+        <div ng-switch-when="administrate" ng-controller="administrateController"><ng-include src="'View/Admin/Survey/Index.html'"></ng-include></div>
+        <div ng-switch-when="report">Home Span</div>
+        <div ng-switch-default></div>
+    </div>
+</section>
