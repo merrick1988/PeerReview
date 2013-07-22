@@ -32,12 +32,10 @@
             };
 
             $scope.saveReview = function(index){
-                console.log($scope.selectedReview)
                 $scope.selectedReview.editMode = false;
                 $scope.reviewees[index] = $scope.selectedReview;
                 $scope.selectedReview = null;
                 $scope.editMode = false;
-                console.log( $scope.reviewees)
             };
 
             $scope.GetFeedbackers = function(){

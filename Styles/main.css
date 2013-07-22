@@ -7,15 +7,27 @@ body {
 
 .blue-line {
     padding: 0;
-    height: 150px;
-    background: linear-gradient(0deg, #63B8FF 0%,  #2D5F9C 100%);
+    height: 70px;
+    background: linear-gradient(0deg, #385268 0%,  #385268 100%);   
+}
+header{
+    position: relative;
+}
+.blue-line:after {
+    content: "";
+    bottom: -4px;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    background: url("../images/section-header-bg.png");
 }
 .blue-line h1, .blue-line h1 a{
     margin: 0;
-    line-height: 150px;
+    line-height: 70px;
     float: left;
     color: #fff;
-    font-size: 70px;
+    font-size: 42px;
     text-decoration: none;
     margin: 0;
     text-shadow: 1px 1px 2px #000;
@@ -390,15 +402,26 @@ body {
 }
 /*   Footer   */
 footer {
-    padding: 10px 10%;
+    padding: 10px 20%;
     margin-top: 70px;
-    border-top: 1px solid #e5e5e5;
     background-color: #f5f5f5;
     height:50px;
     margin-top: -52px;
     width:100%;
     box-sizing: border-box;
     -moz-box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+}
+footer:before {
+    content: "";
+    top: -4px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    display: block;
+    background: url("../images/section-header-bg.png");
 }
 /*  forms */
 select {
@@ -569,11 +592,11 @@ button[type="submit"] {
     position: relative;
 }
 .step-nav .step-header{
-    background: #d9d9d9;
+    background: #dae0e5;
     border-radius: 6px 6px 0 0;
     text-align:center;
     color: #fff;
-    text-shadow: 0 1px 0 #B5B5B5;
+    text-shadow: 0 1px 0 #dae0e5;
     padding: 15px 0;
     position: relative;
 }
@@ -582,8 +605,8 @@ button[type="submit"] {
     margin-top: 0;
 }
 .step-nav .step.active .step-header{
-    background:  #63B8FF;
-    box-shadow: 0 0 2px #63B8FF;
+    background:  #385268 ;
+    box-shadow: 0 0 2px #385268;
 }
 .step-nav .step.active .step-content{
     box-shadow: 0 0 2px #63B8FF;

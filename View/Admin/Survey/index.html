@@ -38,7 +38,7 @@
                         </select>
                         <span ng-show="!reviewee.editMode">{{reviewee.person.FullName}}</span>
                     <td>
-                        <span>{{selectedReview.person.Role}}</span>
+                        <span>{{reviewee.person.Role}}</span>
                     </td>
                     <td class="feedbackers"><span>{{reviewee.feedbackers}}</span></td>
                     <td class="td-icon"><i class="icon-list" ng-show="reviewee.editMode" ng-click="GetFeedbackers()"></i></td>
