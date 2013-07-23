@@ -27,6 +27,7 @@
                 '"Surveys":[{' +
                 '"Id":"58d62c2f-3a01-40fa-ab3e-a1ff00fab7ea",' +
                 '"Name":"Test Rename",' +
+                '"Description":"Test Description",' +
                 '"StartDate":"\/Date(1374105600000)\/",' +
                 '"StopDate":"\/Date(1375401600000)\/",' +
                 '"Scale":1,' +
@@ -56,6 +57,12 @@
             $scope.teams = JSON.parse(tempDataTeams).Teams;
             $scope.persons = JSON.parse(tempDataPersons).Persons;
             $scope.roles = JSON.parse(tempDataRole).Persons;
+            $scope.selectedSurvey = null;
+
+            $scope.selectSurvey = function(index){
+                $scope.selectedSurvey = $scope.surveys[index];
+                console.log($scope.selectedSurvey )
+            };
 
         }]);
 })();

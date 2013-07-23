@@ -11,7 +11,7 @@
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu">
-                        <li ng-repeat="survey in surveys"><a href="">{{survey.Name}}</a></li>
+                        <li ng-repeat="survey in surveys" ng-click="selectSurvey($index)"><a href="">{{survey.Name}}</a></li>
                         <li class="divider"></li>
                         <li><a href="">View all surveys</a></li>
                     </ul>

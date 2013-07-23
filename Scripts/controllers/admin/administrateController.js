@@ -4,13 +4,33 @@
     angular.module('adminModule').
         controller("administrateController", ['$scope', '$log', '$q', '$dialog',
             function ($scope, $log, $q, $dialog) {
+            $scope.currentSurvey = $scope.selectedSurvey ? $scope.selectedSurvey : {
+                Id: null,
+                Name: null,
+                Description: null,
+                StartDate: null,
+                StopDate: null,
+                Scale: 1,
+                Type: null,
+                IsRunning: false,
+                IsAutoStart: true,
+                Recurrency: 0,
+                Report: null,
+                Questionary: null,
+                Reviewees: []
+            };
             $scope.empty = true;
             $scope.editMode = true;
             $scope.addMode = false;
             $scope.selectedReview = { name: '', team: '', role: '',feedbackers:'', selectedPersons: [], selectedTeams: [], editMode: true};
-            $scope.reviewees = [];
-
+            $scope.reviewees = $scope.currentSurvey.Reviewees;
             $scope.currentStepNav = 0; // 0, 1, 2 ...
+
+                $scope.$watch("selectedSurvey", function(){
+                    if($scope.selectedSurvey){
+                        $scope.currentSurvey = $scope.selectedSurvey
+                    }
+                })
             $scope.changeTab = function(){
                 $scope.currentStepNav
             };
@@ -18,25 +38,40 @@
             $scope.addReviewer = function () {
                 if(!$scope.editMode){
                     $scope.selectedReview = { name: '', team: '', role: '',feedbackers:'', selectedPersons: [], selectedTeams: [], editMode: true};
-                    $scope.reviewees.push($scope.selectedReview);
+                    $scope.currentSurvey.Reviewees.push($scope.selectedReview);
                     $scope.editMode = true;
                 }
             };
 
             $scope.editReview = function(index){
                 if(!$scope.editMode){
-                    $scope.reviewees[index].editMode = true;
-                    $scope.selectedReview = $scope.reviewees[index];
+                    $scope.currentSurvey.Reviewees[index].editMode = true;
+                    $scope.selectedReview = $scope.currentSurvey.Reviewees[index];
                     $scope.editMode = true;
                 }
             };
 
             $scope.saveReview = function(index){
                 $scope.selectedReview.editMode = false;
-                $scope.reviewees[index] = $scope.selectedReview;
+                $scope.currentSurvey.Reviewees[index] = $scope.selectedReview;
                 $scope.selectedReview = null;
                 $scope.editMode = false;
             };
+            $scope.getFeedBacksString = function(feedBacks){
+                var resultString = '';
+                if(result.selectedTeams.length){
+                    $scope.selectedReview.selectedTeams = result.selectedTeams
+                    resultString = _.pluck(result.selectedTeams, 'Name').join(", ");
+                    if(result.selectedPersons.length){
+                        resultString += ", ";
+                    }
+                }
+                if(result.selectedPersons.length){
+                    $scope.selectedReview.selectedPersons = result.selectedPersons;
+                    resultString += _.pluck(result.selectedPersons, 'FullName').join(", ");
+                }
+                $scope.selectedReview.feedbackers = resultString;
+            }
 
             $scope.GetFeedbackers = function(){
                 var feedBackModalPromise = $dialog.dialog({
@@ -53,24 +88,12 @@
 
                 $q.when(feedBackModalPromise).then(function(modal){
                     modal.open().then(function(result){
-                        var resultString = '';
-                        if(result.selectedTeams.length){
-                            $scope.selectedReview.selectedTeams = result.selectedTeams
-                            resultString = _.pluck(result.selectedTeams, 'Name').join(", ");
-                            if(result.selectedPersons.length){
-                                resultString += ", ";
-                            }
-                        }
-                        if(result.selectedPersons.length){
-                            $scope.selectedReview.selectedPersons = result.selectedPersons;
-                            resultString += _.pluck(result.selectedPersons, 'FullName').join(", ");
-                        }
-                       $scope.selectedReview.feedbackers = resultString;
+                        $scope.selectedReview.feedbackers = $scope.getFeedBacksString(result);
                     });
                 })
             }
             var init = function(){
-                $scope.reviewees.push($scope.selectedReview);
+                $scope.currentSurvey.Reviewees.push($scope.selectedReview);
             };
 
             init();

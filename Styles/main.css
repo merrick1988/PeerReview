@@ -557,12 +557,12 @@ button[type="submit"] {
 /*  multistep-form*/
 .multistep-form {
 }
-.newSurvay_input, .newSurvay_textarea {
+.newSurvey_input, .newSurvey_textarea {
     display: inline-block;
     width: 40%;
 }
-.newSurvay_input input,
-.newSurvay_textarea textarea{
+.newSurvey_input input,
+.newSurvey_textarea textarea{
     border: 0;
     margin-left: 3px;
     padding: 0 5px;
@@ -570,13 +570,13 @@ button[type="submit"] {
     width: 100%;
     background: transparent;
 }
-.newSurvay_input input:focus:invalid,
-.newSurvay_input input[required]:focus,
-.newSurvay_input input:focus{
+.newSurvey_input input:focus:invalid,
+.newSurvey_input input[required]:focus,
+.newSurvey_input input:focus{
     outline: 0;
     box-shadow: none;
 }
-#NewSurvayForm input[type="submit"]{
+#NewSurveyForm input[type="submit"]{
     margin: 20px 0 0 0;
 }
 

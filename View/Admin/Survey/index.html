@@ -1,10 +1,10 @@
 <div id="admin-section" class="one-column">
-    <form name="newSurvay" id="NewSurvayForm">
-        <div class="newSurvay_input">
-            <input  placeholder="Name this survay..." required value="" ng-modal="newSurvay.name"/>
+    <form name="newSurvey" id="NewSurveyForm">
+        <div class="newSurvey_input">
+            <input  placeholder="Name this Survey..." required value="" ng-model="currentSurvey.Name"/>
         </div>
-        <div class="newSurvay_input">
-            <input placeholder="Discribe purpose of survay..." value="" ng-modal="newSurvay.name"></input>
+        <div class="newSurvey_input">
+            <input placeholder="Discribe purpose of Survey..." value="" ng-model="currentSurvey.Description"/>
         </div>
         <div class="reviewee-list">
             <table id="ListTableID">
@@ -20,7 +20,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="reviewee in reviewees">
+                <tr ng-repeat="reviewee in currentSurvey.Reviewees">
                     <td class="td-icon">
                         <i class="icon-pencil" ng-show="!reviewee.editMode" ng-click="editReview($index)"></i>
                         <i class="icon-ok" ng-show="reviewee.editMode" ng-click="saveReview($index)"></i>
@@ -30,17 +30,17 @@
                         <select ng-model="selectedReview.team" ng-options="team.Name for team in teams" ng-show="reviewee.editMode">
                             <option value="">-- Select a team --</option>
                         </select>
-                        <span ng-show="!reviewee.editMode">{{reviewee.team.Name}}</span>
+                        <span ng-show="!reviewee.editMode">{{reviewee.Team.Name}}</span>
                     </td>
                     <td class="td-select">
                         <select ng-show="reviewee.editMode" ng-model="selectedReview.person" ng-options="person.FullName group by person.Team for person in persons">
                             <option value="">-- Select a person --</option>
                         </select>
-                        <span ng-show="!reviewee.editMode">{{reviewee.person.FullName}}</span>
+                        <span ng-show="!reviewee.editMode">{{reviewee.FullName}}</span>
                     <td>
-                        <span>{{reviewee.person.Role}}</span>
+                        <span>{{reviewee.Role.Name}}</span>
                     </td>
-                    <td class="feedbackers"><span>{{reviewee.feedbackers}}</span></td>
+                    <td class="feedbackers"><span>{{reviewee.Feedbackers}}</span></td>
                     <td class="td-icon"><i class="icon-list" ng-show="reviewee.editMode" ng-click="GetFeedbackers()"></i></td>
                 </tr>
                 </tbody>
